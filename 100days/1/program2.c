@@ -2,19 +2,51 @@
 
 int main()
 {
-    int a, b;
+    int n, i, j, k;
+    int a[10][10], b[10][10], c[10][10] = {0};
 
-    printf("Enter two numbers: ");
-    scanf("%d %d", &a, &b);
+    printf("Enter size of matrix: ");
+    scanf("%d", &n);
 
-    printf("Sum = %d\n", a + b);
-    printf("Difference = %d\n", a - b);
-    printf("Product = %d\n", a * b);
+    printf("Enter first matrix:\n");
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
 
-    if (b != 0)
-        printf("Quotient = %.2f\n", (float)a / b);
-    else
-        printf("Quotient cannot be calculated (division by zero).\n");
+    printf("Enter second matrix:\n");
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            scanf("%d", &b[i][j]);
+        }
+    }
+
+    // Matrix multiplication
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            for(k = 0; k < n; k++)
+            {
+                c[i][j] = c[i][j] + a[i][k] * b[k][j];
+            }
+        }
+    }
+
+    printf("Result:\n");
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            printf("%d ", c[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
